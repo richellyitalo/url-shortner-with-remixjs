@@ -1,0 +1,9 @@
+body {
+  background-color: rgb(190, 138, 203);
+}
+
+.root-top {
+  background-color: #000;
+  padding: 10px;
+  text-shadow: 2px 2px 1px #000;
+}

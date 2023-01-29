@@ -1,4 +1,14 @@
 import RowUrl from './RowUrl';
+import styles from './UrlTableList.css';
+
+export function links() {
+  return [
+    {
+      rel: 'stylesheet',
+      href: styles
+    }
+  ]
+}
 
 const TableHead = () => (
   <thead>
@@ -13,7 +23,7 @@ const TableHead = () => (
 export default function UrlTableList({ urls }) {
   return (
     <>
-      <table className="table">
+      <table id="url-table-list" className="table table-hover">
         <TableHead />
         <tbody>
           {urls.map((url) => (

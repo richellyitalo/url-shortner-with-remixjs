@@ -9,6 +9,12 @@ import {
   useLoaderData,
 } from "@remix-run/react";
 
+import MainNavigation, {
+  links as mainNavigationStyles,
+} from "~/components/nav/MainNavigation";
+
+import mainStyles from '~/styles/main.css';
+
 export const meta = () => ({
   charset: "utf-8",
   title: "New Remix App",
@@ -16,10 +22,15 @@ export const meta = () => ({
 });
 
 export const links = () => [
+  ...mainNavigationStyles(),
   {
     rel: "stylesheet",
     href: "https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css",
   },
+  {
+    rel: 'stylesheet',
+    href: mainStyles
+  }
 ];
 
 export const loader = () =>
@@ -45,8 +56,11 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <div className="root-top">
+          <h1 className="text-center text-white">Remix Shortner 🩳</h1>
+        </div>
         <div className="container">
-          <h1 className="text-center">Remix Shortner</h1>
+          <MainNavigation />
           <Outlet />
         </div>
         <ScrollRestoration />

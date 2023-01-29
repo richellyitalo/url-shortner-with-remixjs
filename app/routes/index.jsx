@@ -1,5 +1,11 @@
-import NewUrl from "~/components/url/NewUrl";
-import UrlTableList from "~/components/url/UrlTableList/UrlTableList";
+import NewUrl, { links as newUrlStyles } from "~/components/url/NewUrl";
+import UrlTableList, {
+  links as UrlTableListStyles,
+} from "~/components/url/UrlTableList/UrlTableList";
+
+export function links() {
+  return [...newUrlStyles(), ...UrlTableListStyles()];
+}
 
 export default function Index() {
   const urls = [
@@ -22,7 +28,7 @@ export default function Index() {
     <>
       <NewUrl />
 
-      <h4 className="text-center">Last shortned urls</h4>
+      <h4 className="text-center m-t-2">Last shortned urls</h4>
       <UrlTableList urls={urls} />
     </>
   );
