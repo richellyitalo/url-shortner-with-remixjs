@@ -1,0 +1,35 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "urls":[
+    {
+      "id": 1,
+      "title": "Title",
+      "url": "https://google.com",
+      "code": "3343434",
+      "createdAt": "2023-01-29T20:37:18.531Z"
+    },
+    {
+      "id": 2,
+      "title": "Title",
+      "url": "https://google.com",
+      "code": "3343434",
+      "createdAt": "2023-01-29T20:37:18.531Z"
+    }
+  ]
+}
