@@ -3,6 +3,7 @@ import api from "./api";
 
 export async function getUrls(limit = null, sort = "id", order = "desc") {
   let urlToRequest = `urls?_sort=${sort}&_order=${order}`;
+
   if (limit !== null) {
     urlToRequest += `&_limit=${limit}`;
   }
@@ -49,4 +50,8 @@ export async function getUrlById(id) {
 
 export async function updateUrl(url) {
   return await api.put(`urls/${url.id}`, url);
+}
+
+export async function deleteUrl(id) {
+  return await api.delete(`urls/${id}`);
 }

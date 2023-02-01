@@ -16,7 +16,7 @@ const TableHead = ({ admin }) => (
       <th>LINK</th>
       <th>TARGET</th>
       <th>VISITS</th>
-      {admin && <th width="150">ACTIONS</th>}
+      {admin && <th width="180">ACTIONS</th>}
     </tr>
   </thead>
 );

@@ -2,12 +2,27 @@ import { useLoaderData } from "@remix-run/react";
 import UrlTableList, {
   links as urlTableListStyles,
 } from "~/components/url/UrlTableList/UrlTableList";
-import { getUrls } from "~/services/url";
+import { deleteUrl, getUrls } from "~/services/url";
 
 // export async function action({ request }) {
 //   const data = await request.formData();
 //   return data;
 // }
+
+const ACTION_DELETE = "delete";
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const id = formData.get("id");
+
+  switch (formData.get("type")) {
+    case ACTION_DELETE:
+      await deleteUrl(id);
+      break;
+  }
+
+  return null;
+}
 
 export async function loader() {
   const urls = await getUrls();
@@ -25,13 +40,16 @@ export default function UrlIndexPage() {
     <>
       <h4 className="text-center m-t-2">
         All Urls&nbsp;
-        {/* {isLoading && <Spinner />} */}
       </h4>
 
-      <UrlTableList
-        urls={urls}
-        admin={true}
-      />
+      {urls.length === 0 ? (
+        <div class="alert alert-warning">No one url saved.</div>
+      ) : (
+        <UrlTableList
+          urls={urls}
+          admin={true}
+        />
+      )}
     </>
   );
 }

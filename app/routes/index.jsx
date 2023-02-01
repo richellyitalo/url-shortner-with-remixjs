@@ -5,6 +5,7 @@ import NewUrl, { links as newUrlStyles } from "~/components/url/NewUrl";
 import UrlTableList, {
   links as UrlTableListStyles,
 } from "~/components/url/UrlTableList/UrlTableList";
+import axios from "axios";
 
 import { createUrl, getUrls } from "~/services/url";
 
@@ -36,7 +37,6 @@ export async function action({ request }) {
 
   return redirect("/");
 }
-
 
 // main
 export default function IndexPage() {

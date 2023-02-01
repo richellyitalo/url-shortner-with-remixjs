@@ -1,17 +1,40 @@
-import { Link } from "@remix-run/react";
+import { Link, useSubmit } from "@remix-run/react";
+import { useState } from "react";
 import { baseUrl } from "~/utils/url";
 
-const ColumnAdmin = () => {
+const ColumnAdmin = ({ id }) => {
+  const submit = useSubmit();
+  const [isLoading, setLoading] = useState(false);
+
+  const handleClickDelete = () => {
+    if (confirm("Do you really want REMOVE this Shortened URL?")) {
+      setLoading(true);
+      submit({ id: id, type: "delete" }, { method: "post", action: "/urls/" });
+    }
+  };
+
   return (
     <td>
-      <button className="btn btn-primary btn-sm">Editar</button>
+      <Link
+        className="btn btn-primary btn-sm"
+        disabled={isLoading}
+        to={`/urls/edit/${id}`}
+      >
+        Editar
+      </Link>
       &nbsp;
-      <button className="btn btn-danger btn-sm">Excluir</button>
+      <button
+        className="btn btn-link btn-danger btn-sm button-delete"
+        onClick={handleClickDelete}
+        disabled={isLoading}
+      >
+        {isLoading ? "Excluindo" : "Excluir"}
+      </button>
     </td>
   );
 };
 
-const RowUrl = ({ url: { visits, url, code }, admin }) => (
+const RowUrl = ({ url: { id, visits, url, code }, admin }) => (
   <tr>
     <td>
       <Link
@@ -24,7 +47,7 @@ const RowUrl = ({ url: { visits, url, code }, admin }) => (
     <td>{url}</td>
     <td>{visits}</td>
 
-    {admin && <ColumnAdmin />}
+    {admin && <ColumnAdmin id={id} />}
   </tr>
 );
 
