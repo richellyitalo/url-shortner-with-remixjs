@@ -21,7 +21,6 @@ export default function NewUrl({errors, fields}) {
 
   return (
     <Form
-      id="new-url-form"
       method="post"
       action="/?index"
       ref={formRef}

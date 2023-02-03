@@ -24,17 +24,17 @@
   },
   "urls": [
     {
-      "url": "https://www.kmimoveis.com.br",
-      "code": "bGRsMnZlM3M",
-      "visits": 0,
-      "createdAt": "2023-02-01T02:57:09.928Z",
+      "url": "https://google.com/search?q=brasil",
+      "code": "bGRsOWJqbGM",
+      "visits": 7,
+      "createdAt": "2023-02-01T05:57:41.232Z",
       "id": 1
     },
     {
-      "url": "https://kmimoveis.com.br",
-      "code": "bGRsMnhjb2o",
-      "visits": 0,
-      "createdAt": "2023-02-01T02:58:41.395Z",
+      "url": "https://fb.com",
+      "code": "bGRsbjBvN3c",
+      "visits": 2,
+      "createdAt": "2023-02-01T12:21:08.635Z",
       "id": 2
     }
   ]

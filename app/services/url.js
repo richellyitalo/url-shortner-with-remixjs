@@ -38,6 +38,29 @@ export async function createUrl(urlData) {
   return [undefined, response.data];
 }
 
+export async function updateUrl(urlData) {
+  const { url, visits } = urlData;
+
+  let errors = {};
+
+  if (!isValidUrl(url)) {
+    errors["url"] = "URL is invalid.";
+  }
+
+  if (Object.values(errors).length > 0) {
+    return [errors, undefined];
+  }
+
+  const payload = {
+    url,
+    visits
+  };
+
+  const response = await api.patch(`urls/${urlData.id}`, payload);
+
+  return [undefined, response.data];
+}
+
 export async function getUrlByCode(code) {
   const response = await api.get(`urls?code=${code}`);
 
@@ -45,11 +68,8 @@ export async function getUrlByCode(code) {
 }
 
 export async function getUrlById(id) {
-  return await api.get(`urls/${id}`);
-}
-
-export async function updateUrl(url) {
-  return await api.put(`urls/${url.id}`, url);
+  const response = await api.get(`urls/${id}`);
+  return !response.data ? null : response.data;
 }
 
 export async function deleteUrl(id) {
